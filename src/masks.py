@@ -13,7 +13,3 @@ def get_mask_account(account_number: str) -> str:
     as in example **XXXX."""
     mask_account = "**" + account_number[-4:]
     return mask_account
-
-
-print(get_mask_card_number("2136456789874521"))
-print(get_mask_account("21364567898745213789"))
