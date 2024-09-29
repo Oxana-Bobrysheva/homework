@@ -12,8 +12,9 @@ def filter_by_state(cards_information: list, state: str = "EXECUTED") -> list:
 def sort_by_date(cards_information: list, reverse: bool = True) -> list:
     """Function that takes the list of dictionaries and returns the sorted list
     of  dictionaries by date."""
-    sorted_list_of_dictionaries = sorted(cards_information, key=lambda x: x["date"], reverse = reverse)
+    sorted_list_of_dictionaries = sorted(cards_information, key=lambda x: x["date"], reverse=reverse)
     return sorted_list_of_dictionaries
+
 
 # sorted_list_of_dictionaries = [
 #             {"id": 41428829, "state": "EXECUTED", "date": "2019-07-03T18:35:29.512364"},
