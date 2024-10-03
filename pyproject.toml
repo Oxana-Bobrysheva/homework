@@ -19,6 +19,9 @@ mypy = "^1.11.2"
 [tool.poetry.group.dev.dependencies]
 pytest = "^8.3.3"
 
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"

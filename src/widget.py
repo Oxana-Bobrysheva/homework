@@ -4,10 +4,18 @@ from masks import get_mask_account, get_mask_card_number
 def mask_account_card(card_or_account_info: str) -> str:
     """Function that takes the string with card name or account
     and gives back masked string of digits and stars."""
-    if "счет" in card_or_account_info.lower():
+    if len(card_or_account_info) < 16:
+        return "Wrong input! Try again."
+    elif sum(char.isdigit() for char in card_or_account_info) == 20 and "счет" in card_or_account_info.lower():
         result = str(get_mask_account(card_or_account_info[-20:]))
-    else:
+    elif sum(char.isdigit() for char in card_or_account_info) == 20:
+        result = str(get_mask_account(card_or_account_info))
+    elif sum(char.isdigit() for char in card_or_account_info) < 20 and "счет" in card_or_account_info.lower():
+        result = "Wrong input! Try again."
+    elif sum(char.isdigit() for char in card_or_account_info) == 16:
         result = str(get_mask_card_number(card_or_account_info[-16:]))
+    else:
+        return "Wrong input! Try again."
     return result
 
 
@@ -19,6 +27,6 @@ def get_date(date_line: str) -> str:
 
 
 # This part is to check if function is working.
-result = mask_account_card("Visa Platinum 7000792289606361")
+result = mask_account_card("92289612345123456789")
 print(result)
 print(get_date("2024-03-11T02:26:18.671407"))
