@@ -22,11 +22,8 @@ def mask_account_card(card_or_account_info: str) -> str:
 def get_date(date_line: str) -> str:
     """Function that turns the line with full date information
     into the date as in the example (day.month.year)."""
-    right_date = str(date_line[8:10] + "." + date_line[5:7] + "." + date_line[:4])
-    return right_date
-
-
-# This part is to check if function is working.
-result = mask_account_card("92289612345123456789")
-print(result)
-print(get_date("2024-03-11T02:26:18.671407"))
+    if date_line == "":
+        return "No date information"
+    else:
+        right_date = str(date_line[8:10] + "." + date_line[5:7] + "." + date_line[:4])
+        return right_date
