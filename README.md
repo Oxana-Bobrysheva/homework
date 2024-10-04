@@ -6,9 +6,6 @@ that would be able to show different services.
 
 ## Installation:
 1. Clone repository:
-   ```
-git clone http://github.com/...
-   ```
 2. Install the dependencies:
 
 ## Manual:
@@ -19,5 +16,9 @@ git clone http://github.com/...
 ## Documentation:
 For any additional information, please, contact us at bobrysheva_oxana@mail.ru
 
-##License:
+## Tests:
+Test has been developed to check the functions used in the programme. 
+Coverage is 99% which is high.
+
+## License:
 This project has no license so ever. So you are welcome to use it)
