@@ -12,7 +12,6 @@ def filter_by_currency(list_of_transactions: list, currency: str) -> Iterator[di
         ):
             yield transaction
 
-
 def transaction_descriptions(list_of_transactions: list) -> Iterator[str]:
     """This function takes the list of transactions and returns iterator
     that shows description of transaction"""
@@ -93,5 +92,5 @@ descriptions = transaction_descriptions(transactions)
 for _ in range(5):
     print(next(descriptions))
 
-for card_number in card_number_generator(26, 99):
+for card_number in card_number_generator(1, 3):
     print(card_number)
