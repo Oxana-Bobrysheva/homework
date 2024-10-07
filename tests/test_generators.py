@@ -30,5 +30,5 @@ def test_transaction_descriptions(list_of_transactions: list) -> None:
         (2, 3, "0000 0000 0000 0002"),
     ],
 )
-def test_card_number_generator(start, end, mask):
+def test_card_number_generator(start: int, end: int, mask: str) -> None:
     assert next(card_number_generator(start, end)) == mask
