@@ -1,4 +1,4 @@
-from typing import Iterator
+from typing import Iterator, Generator
 
 
 def filter_by_currency(list_of_transactions: list, currency: str) -> Iterator[dict]:
@@ -18,6 +18,22 @@ def transaction_descriptions(list_of_transactions: list) -> Iterator[str]:
     that shows description of transaction"""
     for transaction in list_of_transactions:
         yield transaction["description"]
+
+
+def card_number_generator(start: int, end: int) -> Generator[str, None, None]:
+    """This function generates credit card numbers in the format XXXX XXXX XXXX XXXX
+    within the specified range."""
+    for card_num in range(start, end):
+        # Convert card number to string
+        card_str = str(card_num)
+
+        # Pad with leading zeros to ensure 16 digits
+        padded_card = card_str.zfill(16)
+
+        # Format the card number
+        formatted_card = f"{padded_card[:4]} {padded_card[4:8]} {padded_card[8:12]} {padded_card[12:]}"
+
+        yield formatted_card
 
 
 # List of transactions to check the ability of the function
@@ -76,3 +92,6 @@ for _ in range(2):
 descriptions = transaction_descriptions(transactions)
 for _ in range(5):
     print(next(descriptions))
+
+for card_number in card_number_generator(26, 99):
+    print(card_number)
