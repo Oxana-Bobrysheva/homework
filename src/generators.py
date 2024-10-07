@@ -1,16 +1,23 @@
 from typing import Iterator
 
 
-def filter_by_currency(transactions: list, currency: str) -> Iterator[dict]:
+def filter_by_currency(list_of_transactions: list, currency: str) -> Iterator[dict]:
     """This function takes the list of transactions and returns iterator
     that shows transactions with certain currency"""
-    for transaction in transactions:
+    for transaction in list_of_transactions:
         if (
             transaction.get("operationAmount")
             and transaction["operationAmount"].get("currency")
             and transaction["operationAmount"]["currency"].get("name") == currency
         ):
             yield transaction
+
+
+def transaction_descriptions(list_of_transactions: list) -> Iterator[str]:
+    """This function takes the list of transactions and returns iterator
+    that shows description of transaction"""
+    for transaction in list_of_transactions:
+        yield transaction["description"]
 
 
 # List of transactions to check the ability of the function
@@ -65,3 +72,7 @@ transactions = [
 usd_transactions = filter_by_currency(transactions, "USD")
 for _ in range(2):
     print(next(usd_transactions))
+
+descriptions = transaction_descriptions(transactions)
+for _ in range(5):
+    print(next(descriptions))
