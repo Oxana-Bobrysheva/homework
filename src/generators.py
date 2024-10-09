@@ -12,6 +12,7 @@ def filter_by_currency(list_of_transactions: list, currency: str) -> Iterator[di
         ):
             yield transaction
 
+
 def transaction_descriptions(list_of_transactions: list) -> Iterator[str]:
     """This function takes the list of transactions and returns iterator
     that shows description of transaction"""

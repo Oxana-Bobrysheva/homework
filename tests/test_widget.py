@@ -24,12 +24,7 @@ def test_mask_account_card(card_or_account_info: str, mask: str) -> str:
 
 @pytest.mark.parametrize(
     "date_info, mask",
-    [
-        ("2024-03-11T02:26:18.671407", "11.03.2024"),
-        ("", "No date information"),
-        ("2024-03-11T", "11.03.2024")
-    ]
+    [("2024-03-11T02:26:18.671407", "11.03.2024"), ("", "No date information"), ("2024-03-11T", "11.03.2024")],
 )
 def test_get_date(date_info: str, mask: str) -> str:
     assert get_date(date_info) == mask
-

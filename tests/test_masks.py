@@ -15,6 +15,7 @@ def test_get_mask_card_number() -> str:
         == "This card number is NOT correct. It should have 16 numbers. Try again."
     )
 
+
 # Decorator that allows to check the function with different input data
 @pytest.mark.parametrize(
     "account_number, mask",
