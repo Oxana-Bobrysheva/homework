@@ -16,6 +16,13 @@ that would be able to show different services.
 ## Documentation:
 For any additional information, please, contact us at bobrysheva_oxana@mail.ru
 
+## Functions
+There are four modules with functions:
+1. Masks 
+2. Widget
+3. Processing
+4. Generators
+
 ## Tests:
 Test has been developed to check the functions used in the programme. 
 Coverage is 99% which is high.

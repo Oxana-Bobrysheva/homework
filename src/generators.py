@@ -1,18 +1,42 @@
-import pytest
-
-@pytest.fixture
-def list_of_dict() -> list:
-    return [
-            {"id": 41428829, "state": "EXECUTED", "date": "2019-07-03T18:35:29.512364"},
-            {"id": 939719570, "state": "EXECUTED", "date": "2018-06-30T02:08:58.425572"},
-            {"id": 594226727, "state": "CANCELED", "date": "2018-09-12T21:27:25.241689"},
-            {"id": 615064591, "state": "CANCELED", "date": "2018-10-14T08:21:33.419441"},
-]
+from typing import Iterator, Generator
 
 
-@pytest.fixture
-def list_of_transactions() -> list:
-    return [
+def filter_by_currency(list_of_transactions: list, currency: str) -> Iterator[dict]:
+    """This function takes the list of transactions and returns iterator
+    that shows transactions with certain currency"""
+    for transaction in list_of_transactions:
+        if (
+            transaction.get("operationAmount")
+            and transaction["operationAmount"].get("currency")
+            and transaction["operationAmount"]["currency"].get("name") == currency
+        ):
+            yield transaction
+
+def transaction_descriptions(list_of_transactions: list) -> Iterator[str]:
+    """This function takes the list of transactions and returns iterator
+    that shows description of transaction"""
+    for transaction in list_of_transactions:
+        yield transaction["description"]
+
+
+def card_number_generator(start: int, end: int) -> Generator[str, None, None]:
+    """This function generates credit card numbers in the format XXXX XXXX XXXX XXXX
+    within the specified range."""
+    for card_num in range(start, end):
+        # Convert card number to string
+        card_str = str(card_num)
+
+        # Pad with leading zeros to ensure 16 digits
+        padded_card = card_str.zfill(16)
+
+        # Format the card number
+        formatted_card = f"{padded_card[:4]} {padded_card[4:8]} {padded_card[8:12]} {padded_card[12:]}"
+
+        yield formatted_card
+
+
+# List of transactions to check the ability of the function
+transactions = [
     {
         "id": 939719570,
         "state": "EXECUTED",
@@ -59,3 +83,14 @@ def list_of_transactions() -> list:
         "to": "Счет 14211924144426031657",
     },
 ]
+
+usd_transactions = filter_by_currency(transactions, "USD")
+for _ in range(2):
+    print(next(usd_transactions))
+
+descriptions = transaction_descriptions(transactions)
+for _ in range(5):
+    print(next(descriptions))
+
+for card_number in card_number_generator(1, 3):
+    print(card_number)
