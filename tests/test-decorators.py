@@ -5,6 +5,7 @@ from src.widget import mask_account_card, get_date
 
 # Тест для успешного выполнения функции
 def test_log_success(capsys):
+    """Testing function that checks decorator."""
     result = mask_account_card("Visa 1234567812345678")
     assert result == None
 
