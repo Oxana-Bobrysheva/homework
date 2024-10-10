@@ -1,6 +1,7 @@
 import pytest
+
 from src.decorators import log
-from src.widget import mask_account_card, get_date
+from src.widget import get_date, mask_account_card
 
 
 # Тест для успешного выполнения функции
