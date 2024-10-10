@@ -1,6 +1,8 @@
 from masks import get_mask_account, get_mask_card_number
+from decorators import log
 
 
+@log()
 def mask_account_card(card_or_account_info: str) -> str:
     """Function that takes the string with card name or account
     and gives back masked string of digits and stars."""
@@ -19,6 +21,7 @@ def mask_account_card(card_or_account_info: str) -> str:
     return result
 
 
+@log()
 def get_date(date_line: str) -> str:
     """Function that turns the line with full date information
     into the date as in the example (day.month.year)."""

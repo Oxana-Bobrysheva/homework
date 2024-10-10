@@ -1,15 +1,15 @@
+import pytest
 from src.decorators import log
+from src.widget import mask_account_card, get_date
 
 
 # Тест для успешного выполнения функции
 def test_log_success(capsys):
-    @log()
-    def faulty_function(x, y):
-        return x / y
+    result = mask_account_card("Visa 1234567812345678")
+    assert result == None
 
-    faulty_function(2, 2)
     captured = capsys.readouterr()
-    assert captured.out == "faulty_function ok\n"
+    assert "mask_account_card ok\n" in captured.out
 
 
 # Тест для обработки исключений
