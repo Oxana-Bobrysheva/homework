@@ -1,0 +1,3 @@
+my_function ok
+my_function ERROR: ZeroDivisionError. Inputs: (2, 0), {}my_function ERROR: ZeroDivisionError. Inputs: (2, 0), {} 
+my_function ERROR: ZeroDivisionError. Inputs: (2, 0), {} 
