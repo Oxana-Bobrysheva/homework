@@ -22,10 +22,11 @@ There are four modules with functions:
 2. Widget
 3. Processing
 4. Generators
+5. Decorators
 
 ## Tests:
 Test has been developed to check the functions used in the programme. 
-Coverage is 99% which is high.
+Coverage is 91% 
 
 ## License:
 This project has no license so ever. So you are welcome to use it)
