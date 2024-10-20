@@ -6,7 +6,7 @@ from dotenv import load_dotenv
 load_dotenv()
 
 
-def exchange_currentcy(to, from1, amount):
+def exchange_currency(to, from1, amount):
     """Function that takes rate from API and returns the exchange amount of RUBLES"""
     url = f"https://api.apilayer.com/exchangerates_data/convert?to={to}&from={from1}&amount={amount}"
 
@@ -21,4 +21,4 @@ def exchange_currentcy(to, from1, amount):
 
 
 if __name__ == "__main__":
-    print(exchange_currentcy("RUB", "EUR", 100))
+    print(exchange_currency("RUB", "EUR", 100))
