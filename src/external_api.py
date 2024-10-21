@@ -14,11 +14,11 @@ def exchange_currency(to, from1, amount):
 
     response = requests.get(url, headers=headers)
 
-    status_code = response.status_code
-    if status_code:
+    if response.status_code == 200:
         result = response.json().get("result")
-    return result
-
+        return result
+    else:
+        return None
 
 if __name__ == "__main__":
     print(exchange_currency("RUB", "EUR", 100))
