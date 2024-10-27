@@ -23,6 +23,10 @@ There are four modules with functions:
 3. Processing
 4. Generators
 5. Decorators
+6. Utils
+7. External_API
+8. Reading_csv files
+9. Reading_excel files
 
 ## Tests:
 Test has been developed to check the functions used in the programme. 
