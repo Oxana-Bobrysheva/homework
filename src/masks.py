@@ -24,7 +24,7 @@ def get_mask_card_number(card_number: str) -> str:
             logger.warning("This card number is NOT correct.")
             return "This card number is NOT correct. It should have 16 numbers. Try again."
     except Exception as ex:
-        logger.error(f'Error occurred: {ex}')
+        logger.error(f"Error occurred: {ex}")
 
 
 def get_mask_account(account_number: str) -> str:
@@ -40,7 +40,7 @@ def get_mask_account(account_number: str) -> str:
             logger.warning("This card number is NOT correct.")
             return "This account number is NOT correct. It should have 20 numbers. Try again."
     except Exception as ex:
-        logger.error(f'Error occurred: {ex}')
+        logger.error(f"Error occurred: {ex}")
 
 
 if __name__ == "__main__":
