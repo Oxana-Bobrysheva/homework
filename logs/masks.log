@@ -1,4 +1,2 @@
-2024-10-22 00:06:33,899 - __main__ - INFO: Starting the function get_mask_card_number
-2024-10-22 00:06:33,899 - __main__ - INFO: Mask of the credit card was made: 1234 56** **** 5677
-2024-10-22 00:06:33,900 - __main__ - INFO: Starting the function get_mask_account
-2024-10-22 00:06:33,900 - __main__ - INFO: Mask of the account was made: **2344
+2024-10-28 11:52:08,755 - masks - INFO: Starting the function get_mask_card_number
+2024-10-28 11:52:08,755 - masks - INFO: Mask of the credit card was made: 1234 56** **** 5678

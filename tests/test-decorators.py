@@ -1,14 +1,12 @@
-import pytest
-
 from src.decorators import log
-from src.widget import get_date, mask_account_card
+from src.widget import mask_account_card
 
 
 # Тест для успешного выполнения функции
 def test_log_success(capsys):
     """Testing function that checks decorator."""
     result = mask_account_card("Visa 1234567812345678")
-    assert result == None
+    assert result is None
 
     captured = capsys.readouterr()
     assert "mask_account_card ok\n" in captured.out
