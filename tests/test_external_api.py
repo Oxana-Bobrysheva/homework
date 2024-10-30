@@ -1,18 +1,15 @@
 import unittest
-from unittest.mock import patch, Mock
+from unittest.mock import Mock, patch
+
 from src.external_api import exchange_currency
+
 
 class TestExchangeCurrency(unittest.TestCase):
 
-    @patch('src.external_api.requests.get')
+    @patch("src.external_api.requests.get")
     def test_exchange_currency_rub_to_other(self, mock_get):
         # Настраиваем мок для ответа API
-        transaction = {
-            "operationAmount": {
-                "amount": 1000,
-                "currency": {"code": "USD"}
-            }
-        }
+        transaction = {"operationAmount": {"amount": 1000, "currency": {"code": "USD"}}}
 
         # Настраиваем мок ответа
         mock_response = Mock()
@@ -27,14 +24,9 @@ class TestExchangeCurrency(unittest.TestCase):
         self.assertEqual(result, 75000)
         mock_get.assert_called_once()  # Проверяем, что запрос был выполнен
 
-    @patch('src.external_api.requests.get')
+    @patch("src.external_api.requests.get")
     def test_exchange_currency_rub_to_rub(self, mock_get):
-        transaction = {
-            "operationAmount": {
-                "amount": 1000,
-                "currency": {"code": "RUB"}
-            }
-        }
+        transaction = {"operationAmount": {"amount": 1000, "currency": {"code": "RUB"}}}
 
         result = exchange_currency(transaction)
 
@@ -42,14 +34,9 @@ class TestExchangeCurrency(unittest.TestCase):
         self.assertEqual(result, 1000)
         mock_get.assert_not_called()  # Запрос не должен быть выполнен
 
-    @patch('src.external_api.requests.get')
+    @patch("src.external_api.requests.get")
     def test_exchange_currency_api_error(self, mock_get):
-        transaction = {
-            "operationAmount": {
-                "amount": 1000,
-                "currency": {"code": "USD"}
-            }
-        }
+        transaction = {"operationAmount": {"amount": 1000, "currency": {"code": "USD"}}}
 
         # Настраиваем мок ответа на ошибку
         mock_response = Mock()
@@ -62,6 +49,6 @@ class TestExchangeCurrency(unittest.TestCase):
         self.assertIsNone(result)
         mock_get.assert_called_once()  # Проверяем, что запрос был выполнен
 
-if __name__ == '__main__':
-    unittest.main()
 
+if __name__ == "__main__":
+    unittest.main()

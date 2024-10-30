@@ -1,10 +1,12 @@
-from unittest.mock import mock_open, patch
 import csv
+from typing import Any
+from unittest.mock import mock_open, patch
 
-def read_financial_operations(file_path):
+
+def read_financial_operations(file_path: str) -> Any:
     transactions = []
     try:
-        with open(file_path, mode='r', encoding='utf-8') as csvfile:
+        with open(file_path, mode="r", encoding="utf-8") as csvfile:
             reader = csv.DictReader(csvfile)
             for row in reader:
                 transactions.append(row)
@@ -16,22 +18,24 @@ def read_financial_operations(file_path):
     return transactions
 
 
-def test_read_financial_operations_success():
+def test_read_financial_operations_success() -> None:
     mock_csv_data = "date,amount,description\n2023-01-01,100,Salary\n2023-01-02,-50,Groceries\n"
     with patch("builtins.open", mock_open(read_data=mock_csv_data)):
         result = read_financial_operations("mocked_file.csv")
         expected_result = [
-            {'date': '2023-01-01', 'amount': '100', 'description': 'Salary'},
-            {'date': '2023-01-02', 'amount': '-50', 'description': 'Groceries'}
+            {"date": "2023-01-01", "amount": "100", "description": "Salary"},
+            {"date": "2023-01-02", "amount": "-50", "description": "Groceries"},
         ]
         assert result == expected_result
 
-def test_file_not_found():
+
+def test_file_not_found() -> None:
     with patch("builtins.open", side_effect=FileNotFoundError):
         result = read_financial_operations("non_existent_file.csv")
         assert result == []
 
-def test_other_exception():
+
+def test_other_exception() -> None:
     with patch("builtins.open", side_effect=Exception("Some error")):
         result = read_financial_operations("mocked_file.csv")
         assert result == []

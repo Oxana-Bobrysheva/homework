@@ -1,10 +1,10 @@
 import csv
 
 
-def read_financial_operations(file_path):
+def read_financial_operations(file_path: str) -> list:
     transactions = []
     try:
-        with open(file_path, mode='r', encoding='utf-8') as csvfile:
+        with open(file_path, mode="r", encoding="utf-8") as csvfile:
             reader = csv.DictReader(csvfile)
             for row in reader:
                 transactions.append(row)

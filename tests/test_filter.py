@@ -1,12 +1,13 @@
-import unittest
-from unittest.mock import patch, Mock
-from src.filter import filter_by_search_string
 import re
+import unittest
+from unittest.mock import Mock, patch
+
+from src.filter import filter_by_search_string
 
 
 class TestFilterBySearchString(unittest.TestCase):
 
-    def setUp(self):
+    def setUp(self) -> None:
         """Метод, который выполняется перед каждым тестом."""
         self.transactions = [
             {"description": "Grocery shopping", "amount": 50.0},
@@ -16,7 +17,7 @@ class TestFilterBySearchString(unittest.TestCase):
             {"description": "Electricity bill", "amount": 100.0},
         ]
 
-    @patch('src.filter.re.compile')
+    @patch("src.filter.re.compile")
     def test_filter_with_mocked_re_compile(self, mock_compile):
         """Тест с замокированной функцией re.compile."""
         # Настройка mock для возвращения объекта, который будет имитировать поведение search
@@ -33,7 +34,7 @@ class TestFilterBySearchString(unittest.TestCase):
         # Проверка, что re.compile была вызвана с правильным аргументом
         mock_compile.assert_called_once_with("Grocery", re.IGNORECASE)
 
-    @patch('src.filter.re.compile')
+    @patch("src.filter.re.compile")
     def test_filter_no_match_with_mocked_re_compile(self, mock_compile):
         """Тест с замокированной функцией re.compile, возвращающей None."""
         mock_pattern = Mock()

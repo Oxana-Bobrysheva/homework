@@ -1,9 +1,11 @@
 import unittest
-from src.counter import get_categories, count_transactions_by_category
+
+from src.counter import count_transactions_by_category, get_categories
+
 
 class TestCounterFunctions(unittest.TestCase):
 
-    def test_get_categories(self):
+    def test_get_categories(self) -> None:
         # Тестируем функцию get_categories
         transactions = [
             {"description": "Groceries"},
@@ -21,7 +23,7 @@ class TestCounterFunctions(unittest.TestCase):
         # Проверяем, что результат не содержит дубликатов
         self.assertEqual(len(result), len(set(result)))
 
-    def test_count_transactions_by_category(self):
+    def test_count_transactions_by_category(self) -> None:
         # Тестируем функцию count_transactions_by_category
         transactions = [
             {"description": "Groceries at Store"},
@@ -43,7 +45,7 @@ class TestCounterFunctions(unittest.TestCase):
         # Проверяем, что результат соответствует ожидаемому
         self.assertEqual(result, expected_count)
 
-    def test_count_transactions_by_category_no_matches(self):
+    def test_count_transactions_by_category_no_matches(self) -> None:
         # Тестируем случай, когда нет совпадений категорий
         transactions = [
             {"description": "Rent payment"},
@@ -51,12 +53,13 @@ class TestCounterFunctions(unittest.TestCase):
         ]
 
         categories = ["Groceries", "Utilities", "Entertainment"]
-        expected_count = {}
+        expected_count: dict = {}
 
         result = count_transactions_by_category(transactions, categories)
 
         # Проверяем, что результат соответствует ожидаемому
         self.assertEqual(result, expected_count)
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     unittest.main()

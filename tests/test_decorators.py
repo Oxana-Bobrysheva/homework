@@ -1,12 +1,13 @@
 import unittest
 from unittest.mock import patch
+
 from src.decorators import log
 
 
 class TestLogDecorator(unittest.TestCase):
 
-    @patch('src.decorators.logging.info')
-    @patch('src.decorators.logging.error')
+    @patch("src.decorators.logging.info")
+    @patch("src.decorators.logging.error")
     def test_log_success(self, mock_error, mock_info):
         @log()
         def sample_function(x, y):
@@ -25,8 +26,8 @@ class TestLogDecorator(unittest.TestCase):
         # Проверяем, что лог ошибок не был вызван
         mock_error.assert_not_called()
 
-    @patch('src.decorators.logging.info')
-    @patch('src.decorators.logging.error')
+    @patch("src.decorators.logging.info")
+    @patch("src.decorators.logging.error")
     def test_log_error(self, mock_error, mock_info):
         @log()
         def sample_function(x, y):
@@ -38,9 +39,10 @@ class TestLogDecorator(unittest.TestCase):
         # Проверяем, что логирование вызвано корректно
         mock_info.assert_any_call("Starting 'sample_function' with arguments: (1, 0), {}")
         mock_error.assert_any_call(
-            "Error in 'sample_function': ZeroDivisionError - division by zero with arguments: (1, 0), {}")
+            "Error in 'sample_function': ZeroDivisionError - division by zero with arguments: (1, 0), {}"
+        )
         mock_info.assert_any_call("Finished 'sample_function'")
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()
