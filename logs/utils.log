@@ -1,8 +1,0 @@
-2024-10-30 22:59:41,519 - src.utils - INFO: Starting the function get_transactions
-2024-10-30 22:59:41,520 - src.utils - INFO: Starting the function get_transactions
-2024-10-30 22:59:41,520 - src.utils - INFO: Downloading data from file
-2024-10-30 22:59:41,520 - src.utils - ERROR: An Error has occurred Expecting value: line 1 column 1 (char 0)
-2024-10-30 22:59:41,521 - src.utils - INFO: Starting the function get_transactions
-2024-10-30 22:59:41,522 - src.utils - INFO: Downloading data from file
-2024-10-30 22:59:41,522 - src.utils - INFO: Starting the function get_transactions
-2024-10-30 22:59:41,522 - src.utils - INFO: Downloading data from file
