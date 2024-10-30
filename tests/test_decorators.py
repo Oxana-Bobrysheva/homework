@@ -1,23 +1,46 @@
+import unittest
+from unittest.mock import patch
 from src.decorators import log
-from src.widget import mask_account_card
 
 
-# Тест для успешного выполнения функции
-def test_log_success(capsys):
-    """Testing function that checks decorator."""
-    result = mask_account_card("Visa 1234567812345678")
-    assert result is None
+class TestLogDecorator(unittest.TestCase):
 
-    captured = capsys.readouterr()
-    assert "mask_account_card ok\n" in captured.out
+    @patch('src.decorators.logging.info')
+    @patch('src.decorators.logging.error')
+    def test_log_success(self, mock_error, mock_info):
+        @log()
+        def sample_function(x, y):
+            return x + y
+
+        result = sample_function(2, 3)
+
+        # Проверяем, что результат функции правильный
+        self.assertEqual(result, 5)
+
+        # Проверяем, что логирование вызвано корректно
+        mock_info.assert_any_call("Starting 'sample_function' with arguments: (2, 3), {}")
+        mock_info.assert_any_call("'sample_function' returned: 5")
+        mock_info.assert_any_call("Finished 'sample_function'")
+
+        # Проверяем, что лог ошибок не был вызван
+        mock_error.assert_not_called()
+
+    @patch('src.decorators.logging.info')
+    @patch('src.decorators.logging.error')
+    def test_log_error(self, mock_error, mock_info):
+        @log()
+        def sample_function(x, y):
+            return x / y
+
+        with self.assertRaises(ZeroDivisionError):
+            sample_function(1, 0)
+
+        # Проверяем, что логирование вызвано корректно
+        mock_info.assert_any_call("Starting 'sample_function' with arguments: (1, 0), {}")
+        mock_error.assert_any_call(
+            "Error in 'sample_function': ZeroDivisionError - division by zero with arguments: (1, 0), {}")
+        mock_info.assert_any_call("Finished 'sample_function'")
 
 
-# Тест для обработки исключений
-def test_log_error(capsys):
-    @log()
-    def faulty_function(x, y):
-        return x / y
-
-    faulty_function(2, 0)
-    captured = capsys.readouterr()
-    assert captured.out == "faulty_function ERROR: ZeroDivisionError. Inputs: (2, 0), {}\n"
+if __name__ == '__main__':
+    unittest.main()

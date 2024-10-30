@@ -1,27 +1,33 @@
+import logging
 from functools import wraps
 
 
 def log(filename=None):
-    """Function decorator that allows to write the process of execution of the function
-    into the log file or a console."""
+    # Настройка логирования
+    if filename:
+        logging.basicConfig(filename=filename, level=logging.INFO,
+                            format='%(asctime)s - %(levelname)s - %(message)s')
+    else:
+        logging.basicConfig(level=logging.INFO,
+                            format='%(asctime)s - %(levelname)s - %(message)s')
 
-    def wrapper(func):
+    def decorator(func):
         @wraps(func)
-        def inner(*args, **kwargs):
+        def wrapper(*args, **kwargs):
+            logging.info(f"Starting '{func.__name__}' with arguments: {args}, {kwargs}")
             try:
-                func(*args, **kwargs)
-                if filename:
-                    with open(filename, "a", encoding="UTF-8") as file:
-                        file.write(f"{func.__name__} ok \n")
-                else:
-                    print(f"{func.__name__} ok")
+                result = func(*args, **kwargs)
+                logging.info(f"'{func.__name__}' returned: {result}")
+                return result
             except Exception as e:
-                if filename:
-                    with open(filename, "a", encoding="UTF-8") as file:
-                        file.write(f"{func.__name__} ERROR: {e.__class__.__name__}. Inputs: {args}, {kwargs} \n")
-                else:
-                    print(f"{func.__name__} ERROR: {e.__class__.__name__}. Inputs: {args}, {kwargs}")
+                logging.error(f"Error in '{func.__name__}': {type(e).__name__} - {e} with arguments: {args}, {kwargs}")
+                raise  # Перебрасываем исключение дальше
+            finally:
+                logging.info(f"Finished '{func.__name__}'")
 
-        return inner
+        return wrapper
 
-    return wrapper
+    return decorator
+
+
+
