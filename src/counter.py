@@ -21,16 +21,15 @@ def count_transactions_by_category(list_of_transactions: list, list_of_categorie
 
     # Итерируемся по всем операциям
     for transaction in list_of_transactions:
-        # Получаем описание операции
-        description = transaction.get("description", "")
-
         # Проверяем, если описание содержит категорию
         for category in list_of_categories:
-            if category in description:
+            if category in transaction.get("description", ""):
                 category_counter[category] += 1
 
+    if not any(category_counter.values()):
+        return {}
     # Преобразуем счетчик в словарь и возвращаем
-    return dict(category_counter)
+    return {category: category_counter.get(category, 0) for category in list_of_categories}
 
 
 # Пример использования
