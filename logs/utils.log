@@ -1,2 +1,8 @@
-2024-10-21 23:42:26,601 - __main__ - INFO: Starting the function get_transactions
-2024-10-21 23:42:26,601 - __main__ - INFO: Downloading data from file
+2024-10-30 13:29:09,201 - src.utils - INFO: Starting the function get_transactions
+2024-10-30 13:29:09,202 - src.utils - INFO: Starting the function get_transactions
+2024-10-30 13:29:09,202 - src.utils - INFO: Downloading data from file
+2024-10-30 13:29:09,202 - src.utils - ERROR: An Error has occurred Expecting value: line 1 column 1 (char 0)
+2024-10-30 13:29:09,203 - src.utils - INFO: Starting the function get_transactions
+2024-10-30 13:29:09,204 - src.utils - INFO: Downloading data from file
+2024-10-30 13:29:09,204 - src.utils - INFO: Starting the function get_transactions
+2024-10-30 13:29:09,204 - src.utils - INFO: Downloading data from file

@@ -1,5 +1,5 @@
-from decorators import log
-from masks import get_mask_account, get_mask_card_number
+from .decorators import log
+from .masks import get_mask_account, get_mask_card_number
 
 
 @log()

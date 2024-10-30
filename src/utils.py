@@ -4,7 +4,7 @@ import os
 
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.DEBUG)
-file_handler = logging.FileHandler("../logs/utils.log", mode="w")
+file_handler = logging.FileHandler("/home/user/PycharmProjects/homework_new/logs/utils.log", mode="w")
 file_formatter = logging.Formatter("%(asctime)s - %(name)s - %(levelname)s: %(message)s")
 file_handler.setFormatter(file_formatter)
 logger.addHandler(file_handler)
