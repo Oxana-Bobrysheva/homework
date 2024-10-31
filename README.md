@@ -17,7 +17,7 @@ that would be able to show different services.
 For any additional information, please, contact us at bobrysheva_oxana@mail.ru
 
 ## Functions
-There are four modules with functions:
+There are eleven modules with functions:
 1. Masks 
 2. Widget
 3. Processing
@@ -27,10 +27,12 @@ There are four modules with functions:
 7. External_API
 8. Reading_csv files
 9. Reading_excel files
+10. Counter
+11. Filter
 
 ## Tests:
 Test has been developed to check the functions used in the programme. 
-Coverage is 91% 
+Coverage is 84% 
 
 ## License:
 This project has no license so ever. So you are welcome to use it)
