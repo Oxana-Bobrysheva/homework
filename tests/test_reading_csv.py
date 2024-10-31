@@ -1,41 +1,31 @@
-import csv
-from typing import Any
+import unittest
 from unittest.mock import mock_open, patch
 
-
-def read_financial_operations(file_path: str) -> Any:
-    transactions = []
-    try:
-        with open(file_path, mode="r", encoding="utf-8") as csvfile:
-            reader = csv.DictReader(csvfile)
-            for row in reader:
-                transactions.append(row)
-    except FileNotFoundError:
-        print(f"Файл {file_path} не найден.")
-    except Exception as e:
-        print(f"Произошла ошибка: {e}")
-
-    return transactions
+from src.reading_csv import read_financial_operations
 
 
-def test_read_financial_operations_success() -> None:
-    mock_csv_data = "date,amount,description\n2023-01-01,100,Salary\n2023-01-02,-50,Groceries\n"
-    with patch("builtins.open", mock_open(read_data=mock_csv_data)):
-        result = read_financial_operations("mocked_file.csv")
-        expected_result = [
-            {"date": "2023-01-01", "amount": "100", "description": "Salary"},
-            {"date": "2023-01-02", "amount": "-50", "description": "Groceries"},
-        ]
-        assert result == expected_result
+class TestReadFinancialOperations(unittest.TestCase):
 
+    @patch("builtins.open", new_callable=mock_open, read_data="column1;column2\nvalue1;value2\nvalue3;value4\n")
+    def test_read_financial_operations_success(self, mock_file):
+        expected_result = [{"column1": "value1", "column2": "value2"}, {"column1": "value3", "column2": "value4"}]
+        result = read_financial_operations("dummy_path.csv")
+        self.assertEqual(result, expected_result)
+        mock_file.assert_called_once_with("dummy_path.csv", mode="r", encoding="utf-8")
 
-def test_file_not_found() -> None:
-    with patch("builtins.open", side_effect=FileNotFoundError):
+    @patch("builtins.open", side_effect=FileNotFoundError)
+    def test_read_financial_operations_file_not_found(self, mock_file):
         result = read_financial_operations("non_existent_file.csv")
-        assert result == []
+        self.assertEqual(result, [])
+        mock_file.assert_called_once_with("non_existent_file.csv", mode="r", encoding="utf-8")
+
+    @patch("builtins.open", new_callable=mock_open)
+    def test_read_financial_operations_other_exception(self, mock_file):
+        mock_file.side_effect = Exception("Some error")
+        result = read_financial_operations("dummy_path.csv")
+        self.assertEqual(result, [])
+        mock_file.assert_called_once_with("dummy_path.csv", mode="r", encoding="utf-8")
 
 
-def test_other_exception() -> None:
-    with patch("builtins.open", side_effect=Exception("Some error")):
-        result = read_financial_operations("mocked_file.csv")
-        assert result == []
+if __name__ == "__main__":
+    unittest.main()

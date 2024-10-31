@@ -6,48 +6,70 @@ from src.external_api import exchange_currency
 
 class TestExchangeCurrency(unittest.TestCase):
 
-    @patch("src.external_api.requests.get")
-    def test_exchange_currency_rub_to_other(self, mock_get):
-        # Настраиваем мок для ответа API
-        transaction = {"operationAmount": {"amount": 1000, "currency": {"code": "USD"}}}
+    @patch("external_api.requests.get")
+    def test_exchange_currency_success(self, mock_get):
+        # Arrange
+        transaction = {"operationAmount": {"amount": 100, "currency": {"code": "USD"}}}
 
-        # Настраиваем мок ответа
+        # Mock the response from the API
         mock_response = Mock()
         mock_response.status_code = 200
-        mock_response.json.return_value = {"result": 75000}  # Предположим, что 1000 USD = 75000 RUB
+        mock_response.json.return_value = {"result": 7500}  # Assume 1 USD = 75 RUB
         mock_get.return_value = mock_response
 
-        # Вызываем тестируемую функцию
+        # Act
         result = exchange_currency(transaction)
 
-        # Проверяем, что результат соответствует ожиданиям
-        self.assertEqual(result, 75000)
-        mock_get.assert_called_once()  # Проверяем, что запрос был выполнен
+        # Assert
+        self.assertEqual(result, 7500)
+        mock_get.assert_called_once()
 
-    @patch("src.external_api.requests.get")
-    def test_exchange_currency_rub_to_rub(self, mock_get):
-        transaction = {"operationAmount": {"amount": 1000, "currency": {"code": "RUB"}}}
+    @patch("external_api.requests.get")
+    def test_exchange_currency_rub(self, mock_get):
+        # Arrange
+        transaction = {"operationAmount": {"amount": 100, "currency": {"code": "RUB"}}}
 
+        # Act
         result = exchange_currency(transaction)
 
-        # Проверяем, что результат равен 1000
-        self.assertEqual(result, 1000)
-        mock_get.assert_not_called()  # Запрос не должен быть выполнен
+        # Assert
+        self.assertEqual(result, 100.0)
+        mock_get.assert_not_called()  # Ensure API was not called
 
-    @patch("src.external_api.requests.get")
+    @patch("external_api.requests.get")
     def test_exchange_currency_api_error(self, mock_get):
-        transaction = {"operationAmount": {"amount": 1000, "currency": {"code": "USD"}}}
+        # Arrange
+        transaction = {"operationAmount": {"amount": 100, "currency": {"code": "EUR"}}}
 
-        # Настраиваем мок ответа на ошибку
+        # Mock the response from the API with an error status
         mock_response = Mock()
-        mock_response.status_code = 404  # Ошибка 404
+        mock_response.status_code = 400  # Bad Request
         mock_get.return_value = mock_response
 
+        # Act
         result = exchange_currency(transaction)
 
-        # Проверяем, что результат равен None
+        # Assert
         self.assertIsNone(result)
-        mock_get.assert_called_once()  # Проверяем, что запрос был выполнен
+        mock_get.assert_called_once()
+
+    @patch("external_api.requests.get")
+    def test_exchange_currency_invalid_json(self, mock_get):
+        # Arrange
+        transaction = {"operationAmount": {"amount": 100, "currency": {"code": "GBP"}}}
+
+        # Mock the response from the API with valid status but invalid JSON
+        mock_response = Mock()
+        mock_response.status_code = 200
+        mock_response.json.return_value = {}  # No result key
+        mock_get.return_value = mock_response
+
+        # Act
+        result = exchange_currency(transaction)
+
+        # Assert
+        self.assertIsNone(result)
+        mock_get.assert_called_once()
 
 
 if __name__ == "__main__":

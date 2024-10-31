@@ -23,6 +23,12 @@ pytest-cov = "^5.0.0"
 
 [tool.pytest.ini_options]
 pythonpath = ["src"]
+addopts = "--cov=src --cov-report=term-missing"
+testpaths = ["tests"]
+
+[tool.coverage.run]
+branch = true
+source = ["src"]
 
 [build-system]
 requires = ["poetry-core"]

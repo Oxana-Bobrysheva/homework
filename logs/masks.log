@@ -1,4 +1,38 @@
-2024-10-31 23:41:47,811 - src.masks - INFO: Starting the function get_mask_account
-2024-10-31 23:41:47,811 - src.masks - INFO: Mask of the account was made: **5996
-2024-10-31 23:41:47,811 - src.masks - INFO: Starting the function get_mask_account
-2024-10-31 23:41:47,812 - src.masks - INFO: Mask of the account was made: **4628
+2024-11-01 00:30:11,939 - src.masks - INFO: Starting the function get_mask_card_number
+2024-11-01 00:30:11,939 - src.masks - INFO: Mask of the credit card was made: 1234 56** **** 5678
+2024-11-01 00:30:11,939 - src.masks - INFO: Starting the function get_mask_card_number
+2024-11-01 00:30:11,939 - src.masks - WARNING: This card number is NOT correct.
+2024-11-01 00:30:11,939 - src.masks - INFO: Starting the function get_mask_card_number
+2024-11-01 00:30:11,939 - src.masks - WARNING: This card number is NOT correct.
+2024-11-01 00:30:11,939 - src.masks - INFO: Starting the function get_mask_card_number
+2024-11-01 00:30:11,939 - src.masks - WARNING: This card number is NOT correct.
+2024-11-01 00:30:11,939 - src.masks - INFO: Starting the function get_mask_card_number
+2024-11-01 00:30:11,939 - src.masks - WARNING: This card number is NOT correct.
+2024-11-01 00:30:11,940 - src.masks - INFO: Starting the function get_mask_account
+2024-11-01 00:30:11,940 - src.masks - INFO: Mask of the account was made: **1234
+2024-11-01 00:30:11,941 - src.masks - INFO: Starting the function get_mask_account
+2024-11-01 00:30:11,941 - src.masks - INFO: Mask of the account was made: **4321
+2024-11-01 00:30:11,941 - src.masks - INFO: Starting the function get_mask_account
+2024-11-01 00:30:11,942 - src.masks - WARNING: This card number is NOT correct.
+2024-11-01 00:30:11,942 - src.masks - INFO: Starting the function get_mask_account
+2024-11-01 00:30:11,942 - src.masks - WARNING: This card number is NOT correct.
+2024-11-01 00:30:11,943 - src.masks - INFO: Starting the function get_mask_account
+2024-11-01 00:30:11,943 - src.masks - WARNING: This card number is NOT correct.
+2024-11-01 00:30:11,944 - src.masks - INFO: Starting the function get_mask_account
+2024-11-01 00:30:11,944 - src.masks - WARNING: This card number is NOT correct.
+2024-11-01 00:30:11,945 - src.masks - INFO: Starting the function get_mask_card_number
+2024-11-01 00:30:11,945 - src.masks - INFO: Mask of the credit card was made: 1234 56** **** 5678
+2024-11-01 00:30:11,945 - src.masks - INFO: Starting the function get_mask_account
+2024-11-01 00:30:11,946 - src.masks - INFO: Mask of the account was made: **1234
+2024-11-01 00:30:11,965 - src.masks - INFO: Starting the function get_mask_account
+2024-11-01 00:30:11,965 - src.masks - INFO: Mask of the account was made: **1234
+2024-11-01 00:30:11,966 - src.masks - INFO: Starting the function get_mask_account
+2024-11-01 00:30:11,966 - src.masks - INFO: Mask of the account was made: **4321
+2024-11-01 00:30:11,967 - src.masks - INFO: Starting the function get_mask_card_number
+2024-11-01 00:30:11,967 - src.masks - INFO: Mask of the credit card was made: 1234 56** **** 4567
+2024-11-01 00:30:11,967 - src.masks - INFO: Starting the function get_mask_card_number
+2024-11-01 00:30:11,967 - src.masks - INFO: Mask of the credit card was made: 1234 56** **** 4567
+2024-11-01 00:30:11,970 - src.masks - INFO: Starting the function get_mask_card_number
+2024-11-01 00:30:11,970 - src.masks - INFO: Mask of the credit card was made: 1233 12** **** 1234
+2024-11-01 00:30:11,971 - src.masks - INFO: Starting the function get_mask_account
+2024-11-01 00:30:11,971 - src.masks - INFO: Mask of the account was made: **1234
