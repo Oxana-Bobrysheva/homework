@@ -567,7 +567,7 @@
   },
   {
     "id": 801684332,
-    "state": "EXECUTED",
+    "state": "PENDING",
     "date": "2019-11-05T12:04:13.781725",
     "operationAmount": {
       "amount": "21344.35",
@@ -611,7 +611,7 @@
   },
   {
     "id": 743628025,
-    "state": "EXECUTED",
+    "state": "PENDING",
     "date": "2018-06-04T06:59:55.424356",
     "operationAmount": {
       "amount": "978.31",

@@ -7,7 +7,7 @@ def mask_account_card(card_or_account_info: str) -> str:
 
     # Проверка на пустую строку
     if not card_or_account_info:
-        return "Wrong input! Try again."
+        pass
 
     digit_count = sum(char.isdigit() for char in card_or_account_info)
 
