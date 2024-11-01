@@ -1,5 +1,6 @@
 import json
 import os
+from typing import Any
 
 import requests
 from dotenv import load_dotenv
@@ -7,7 +8,7 @@ from dotenv import load_dotenv
 load_dotenv()
 
 
-def exchange_currency(transaction: dict) -> float:
+def exchange_currency(transaction: dict) -> Any:
     """Function that takes rate from API and returns the exchange amount of RUBLES"""
 
     amount = transaction["operationAmount"]["amount"]

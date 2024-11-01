@@ -1,11 +1,11 @@
 import csv
 
 
-def read_financial_operations(file_path):
+def read_financial_operations(file_path: str) -> list:
     transactions = []
     try:
-        with open(file_path, mode='r', encoding='utf-8') as csvfile:
-            reader = csv.DictReader(csvfile)
+        with open(file_path, mode="r", encoding="utf-8") as csvfile:
+            reader = csv.DictReader(csvfile, delimiter=";")
             for row in reader:
                 transactions.append(row)
     except FileNotFoundError:

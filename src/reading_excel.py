@@ -1,7 +1,9 @@
+from typing import Any
+
 import pandas as pd
 
 
-def reading_xlsx(file_name):
+def reading_xlsx(file_name: str) -> Any:
     """This function allows to read data from Excel files and returns a list of
     dictionaries."""
     transactions = []
